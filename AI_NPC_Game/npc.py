@@ -10,7 +10,7 @@ class NPC:
 
         self.rect = pygame.Rect(x, y, self.width, self.height)
 
-        self.speed = 3
+        self.speed = 1
         self.direction = 1
         self.left_limit = x - 100
         self.right_limit = x + 100
