@@ -3,6 +3,8 @@ import sys
 from player import Player
 from npc import NPC
 
+
+
 pygame.init()
 
 WIDTH, HEIGHT = 800, 600
