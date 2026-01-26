@@ -4,47 +4,46 @@ from player import Player
 from npc import NPC
 
 
-
+# Initialize all pygame modules
 pygame.init()
 
+# Screen size
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("A_ Game")
 
+# Clock to control FPS
 clock = pygame.time.Clock()
 
-# Creating player in the center
-player = Player(WIDTH // 2, HEIGHT // 2)
-npc = NPC(300, 200)
+# Create player and NPC objects
+player = Player(WIDTH // 2, HEIGHT // 2)      # Player starts at center
+npc = NPC(300, 200)                     # NPC starts at fixed position
 
 running = True
 while running:
-    clock.tick(60)
+    clock.tick(60)    # Run game at 60 frames per second
 
+    # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
+    # Get keyboard input
     keys = pygame.key.get_pressed()
     player.move(keys)
 
     screen.fill((30, 30, 30))
+    # Draw game objects
     player.draw(screen)
-    #npcs = [
-        #NPC(100, 150),
-        #NPC(400, 300),
-        #NPC(600, 100)
-    #]
 
-    #for npc in npcs:
-        #npc.draw(screen)
-    npc.update()
+    # Update NPC logic (FSM + movement)
+    npc.update(player)
     npc.draw(screen)
 
     if player.rect.colliderect(npc.rect):
         print("Collision!")
 
-
+    # Update display
     pygame.display.update()
 
 pygame.quit()
