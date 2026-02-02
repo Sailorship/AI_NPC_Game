@@ -116,7 +116,7 @@ class NPC:
             if player.rect.centery > self.rect.centery:
                 self.rect.y += self.TBspeed
             elif player.rect.centery < self.rect.centery:
-                self.rect.y -= self.TBspeed                # If in attack range, NPC waits for attack cooldown
+                self.rect.y -= self.TBspeed                
 
 
     def attack(self, player):
