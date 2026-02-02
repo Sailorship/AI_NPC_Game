@@ -17,7 +17,8 @@ clock = pygame.time.Clock()
 
 # Create player and NPC objects
 player = Player(WIDTH // 2, HEIGHT // 2)      # Player starts at center
-npc = NPC(300, 200)                     # NPC starts at fixed position
+npc = NPC(650,100)    # NPC starts at fixed position
+
 
 running = True
 while running:
@@ -31,17 +32,17 @@ while running:
     # Get keyboard input
     keys = pygame.key.get_pressed()
     player.move(keys)
+    player.attack(keys, npc)    # Player attack with distance check
 
     screen.fill((30, 30, 30))
+
     # Draw game objects
     player.draw(screen)
 
     # Update NPC logic (FSM + movement)
     npc.update(player)
-    npc.draw(screen)
 
-    if player.rect.colliderect(npc.rect):
-        print("Collision!")
+    npc.draw(screen)
 
     # Update display
     pygame.display.update()
