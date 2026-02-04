@@ -106,6 +106,8 @@ while running:
 
     # Drawing
     screen.fill(BACKGROUND_COLOR)
+    
+    draw_ui()
 
     # Draw game objects
     player.draw(screen)
